@@ -2,22 +2,15 @@
 
 var pageUrl = location.href;
 
-
-/* ------------ LOGIN ---------------*/
-
-/*
-if(localStorage.getItem('username') && pageUrl.indexOf('partials') <= -1){
-    alert("you are loggin in with username"+ localStorage.getItem('username'));
-    window.location = "/partials/home.html";
-    loadDashboard();  
-}*/
-
-
-if(location.search.indexOf('error') > -1){
-    alert("your username and password does not match");
+/* ------------------ SET USERNAME ON PAGE ----------------------- */
+if(pageUrl.indexOf('addworksheet') > -1){
+    alert("yo yo")
+    $("#user-input").val(localStorage.getItem('username'));
 }
 
-$(".login_btn").on("click",function () {
+/* ------------------ LOGIN PAGE ----------------------- */
+
+$(".btn-submit").on("click",function () {
 
     var input_username = $("#inputUsername").val();
     var input_password = $("#inputPassword").val();
@@ -32,24 +25,18 @@ $(".login_btn").on("click",function () {
     // check API
     $.ajax({
         url: '/api/vmw/login',
-        type: "GET",
-        data: { input_data: input_data },
-        dataType: "json",
+        type: "POST",
+        data: input_data,
         success: function(data){
-            console.log(data);
+            //console.log(data);
+            if(data.length > 0){
+                localStorage.setItem('username',data[0].username);
+                window.location = "/";
+            } else {
+                alert("you have entered the incorrect details! please try again!")
+            }
         }
-    })
-
-    /*
-    if(username == 'traceyH' && password == 'ackermans1'){
-        alert("successfull login");
-        localStorage.setItem('username',username);
-        window.location = "/partials/home.html";
-        loadDashboard();       
-    } else {
-        alert("your details are incorrect. Please try again!");
-        $("#inputPassword").val('');
-    }*/
+    });
 });
 
 /* ---------------- DASHBOARD -------------------- */
@@ -69,19 +56,6 @@ function signOut(){
 }
 
 /* ========== ADD WORKSHEET ENTRY ========== */
-
-let addWorkSheetEntry = function(inputName){
-    $.ajax({
-        url: "/api/vmw/addworksheet",
-        type: "POST",
-        data: {
-            name: inputName
-        },
-        success: function(data){
-            console.log(data)
-        }
-    })
-};
 
 let storeListData = [
     {
@@ -244,14 +218,35 @@ $("#sbu_list").on("change", function(){
     }
 });
 
+let addWorkSheetEntry = function(dataObj){
+    //console.log(dataObj);
+    $.ajax({
+        url: "/api/vmw/addworksheet",
+        type: "POST",
+        data: {
+            allData: dataObj
+        },
+        success: function(data){
+            console.log(data)
+        }
+    })
+};
+
 $('.addWorksheet-btn').click(function(){
-    //var getNameVal = $("#nameField").val();
-    //addWorkSheetEntry(getNameVal);
-    alert("do validation first");
 
-    console.log(storeListData);
+    let worksheetData = [
+        {
+            username: localStorage.getItem('username'),
+            date: $("#date-input").val(),
+            sbu: $("#sbu_list").find(":selected").val(),
+            store: $("#store_list").find(":selected").val()
+        }
+    ];
 
+    addWorkSheetEntry(worksheetData);
+
+    /*
     $(".table-responsive input").each(function(k,v){
         console.log(v)
-    });
+    });*/
 })

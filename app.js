@@ -39,30 +39,20 @@ app.post(apiDefaultURL+'/login', function (req, res) {
     let q_verifyDetails = 'select username,password from users where username = ? and password = ?';
 
     mc.query(q_verifyDetails, [input_username,input_password], function (error, results, fields) {
-        if(results.length > 0){
-            res.redirect("/");
-        } else {
-            res.redirect("/login?error=true");
-        }
+        res.send(results);
     });
-
-    //res.send(id+" "+username+" "+password);
 });
 
 // add worksheet entry
 app.post(apiDefaultURL+'/addworksheet', function (req, res) {
 
-    //req.body.name
-    let data = [[req.body.name]];
-
-    let q_addworkSheet = "insert into test (name) values ?";
+    let data = [[req.body.allData[0].username,req.body.allData[0].date,req.body.allData[0].sbu,req.body.allData[0].store]];
+    let q_addworkSheet = "insert into worksheet_main (username,date,sbu,store) values ?";
 
     mc.query(q_addworkSheet, [data], function(err, result){
         if(err) throw err;
         console.log("Number of rows affected "+result.affectedRows);
-    })
-
-    //res.send(JSON.stringify(data));
+    });
 });
 
 /* ======================= CITIES ===================== */

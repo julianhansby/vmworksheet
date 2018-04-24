@@ -104,6 +104,11 @@ a.btn { color: #fff }
  * ADD WORKSHEET PAGE
  */
 
- .table-item { margin-top: 2% }
- .table-item label { font-weight: bold }
- .table-item tr td { width: 33% }
+.item label {
+  width: 120px;
+  font-weight: bold;
+}
+
+.table-item { margin-top: 2% }
+.table-item label { font-weight: bold }
+.table-item tr td { width: 33% }

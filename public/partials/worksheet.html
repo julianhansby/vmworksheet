@@ -103,25 +103,32 @@
             <h1 class="h2">RECORD A WORKSHEET</h1>
           </div>
 
-
-          <label>Date:</label>
-          <input type="text" id="nameField" class="date-picker">
-
-          <label>Choose SBU:</label>
-          <select id="sbu_list">
-            <option value="">--Please Select SBU--</option>
-            <option value="south">South</option>
-            <option value="north">North</option>
-            <option value="central">Central</option>
-            <option value="pta">PTA</option>
-            <option value="coastal">Coastal</option>
-            <option value="jhb">JHB</option>
-          </select>
-
-          <label>Choose Store:</label>
-          <select id="store_list">
-            <!-- dynamically load list here -->
-          </select>          
+          <div class="item">
+            <label>Username: </label>
+            <input type="text" id="user-input" disabled>
+          </div>
+          <div class="item">
+            <label>Date:</label>
+            <input type="text" id="date-input" class="date-picker">
+          </div>
+          <div class="item">
+            <label>Choose SBU:</label>
+            <select id="sbu_list">
+              <option value="">--Please Select SBU--</option>
+              <option value="south">South</option>
+              <option value="north">North</option>
+              <option value="central">Central</option>
+              <option value="pta">PTA</option>
+              <option value="coastal">Coastal</option>
+              <option value="jhb">JHB</option>
+            </select>
+          </div>
+          <div class="item">
+            <label>Choose Store:</label>
+            <select id="store_list">
+              <!-- dynamically load list here -->
+            </select>          
+          </div>
 
           <div class="table-responsive">
 
