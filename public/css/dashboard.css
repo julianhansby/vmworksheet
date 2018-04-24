@@ -12,6 +12,10 @@ a.btn { color: #fff }
 
 .btn-default { background-color: green }
 
+.in {
+  opacity: 0.9 !important;
+}
+
 /*
  * Sidebar
  */
@@ -102,4 +106,4 @@ a.btn { color: #fff }
 
  .table-item { margin-top: 2% }
  .table-item label { font-weight: bold }
- .table-item tr td:first-child { width: 50% }
+ .table-item tr td { width: 33% }

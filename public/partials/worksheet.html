@@ -5,6 +5,7 @@
 			<meta charset="utf-8">
 			<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">			
 			<link rel="stylesheet" type="text/css" href="../../css/vendor/bootstrap.min.css">
+      <link rel="stylesheet" type="text/css" href="../../css/vendor/datepicker.css">
 			<link rel="stylesheet" type="text/css" href="../../css/dashboard.css">
 		</head>
 	<body>
@@ -104,7 +105,23 @@
 
 
           <label>Date:</label>
-          <input type="text" id="nameField">
+          <input type="text" id="nameField" class="date-picker">
+
+          <label>Choose SBU:</label>
+          <select id="sbu_list">
+            <option value="">--Please Select SBU--</option>
+            <option value="south">South</option>
+            <option value="north">North</option>
+            <option value="central">Central</option>
+            <option value="pta">PTA</option>
+            <option value="coastal">Coastal</option>
+            <option value="jhb">JHB</option>
+          </select>
+
+          <label>Choose Store:</label>
+          <select id="store_list">
+            <!-- dynamically load list here -->
+          </select>          
 
           <div class="table-responsive">
 
@@ -115,15 +132,18 @@
                 <tbody>
                   <tr>
                     <td>VM Champ position filled</td>
-                    <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="0" class="number-input"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Availability of VM champ</td>
-                    <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="0" class="number-input"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Availability of Store Manager</td>
-                    <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="0" class="number-input"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>                                
                 </tbody>
               </table>
@@ -136,35 +156,43 @@
                 <tbody>
                   <tr>
                     <td>SKU Availability: Full range &amp; size curve on sales floor</td>
-                    <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="0" class="number-input"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Stock Merchandising (Intensity): Space optimised according to stock levels</td>
-                    <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="0" class="number-input"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Merchandising in stories + categories (wardrobe)</td>
-                    <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="0" class="number-input"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Balancing of walls</td>
-                    <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="0" class="number-input"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Outposting principle applied / opportunities taken</td>
-                    <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="0" class="number-input"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Stock rotation</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>  
                   <tr>
                     <td>Mannequins (positioning and dressing)</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Management of odds (LoBS/Final clearance/SALE/odds baskets)</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                 </tbody>
               </table>
@@ -178,34 +206,42 @@
                   <tr>
                     <td>Stock Recovery (Stock room management / floor recovery)</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>General neatness + cleanliness</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Hanger discipline (correct hanger, hanger facing,  size sticker)</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Sizing discipline (small to big, front to back - fasion + flatpack)</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Maintenance logged/actioned (mirrors, spotlights, footstools etc)</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Steaming</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>  
                   <tr>
                     <td>Store gridding according to floorplan (layout + presentation)</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Management of POS (Latest POS clean-up done, storage of POS)</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                 </tbody>
               </table>
@@ -219,58 +255,72 @@
                   <tr>
                     <td>Pricecards: A8's (Home, Lingerie, Footwear, Baby toiletries)</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
-                    <td>Pricecards: A5's (Nests, stands)</td>
+                    <td>Pricecards: A5's (FC, LOTBS, Enter &amp; Exit, ER)</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Pricecards: Fins (Fin rails)</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>FMCG Pricing (Baby toiletries, nappies, sweets)</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Departmental / Famous For indicator</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Famous For fins</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>  
                   <tr>
                     <td>Fitt room signage</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Cellular cabinet signage</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Last of the Bestsellers/Final Clearance</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Hardware elements (magnets, c-hooks, famous for clips)</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Easy Reacher A5 + easy reacher hook</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Service Centre: Till area (Till backdrops, Till talkers, Till mats, Enter/Exit)</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Service Centre: Cellular + FinServ (Leaflets, A8's, Cellular cabinet signage)</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Windows: Trading Hrs &amp; Credit Decals</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>                                                                                                            
                 </tbody>
               </table>
@@ -284,38 +334,47 @@
                   <tr>
                     <td>Famous For statements</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Replen statements (Flatpack / Categories)</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Smalls</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Logical department layout / flow (sequence of stands acc to seasonal look)</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Home</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>School</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>  
                   <tr>
                     <td>Footwear</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Fin-Serv &amp; Cellular</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Queue-Barrier &amp; Toys</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                 </tbody>
               </table>
@@ -329,6 +388,7 @@
                   <tr>
                     <td>Windows (Polytwirl + Posters)</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Promotional nest</td>
@@ -337,14 +397,17 @@
                   <tr>
                     <td>Sensormatic inserts</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Department deals/promotions</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                   <tr>
                     <td>Weekly information/Tasks</td>
                     <td><input type="text" placeholder="0"></td>
+                    <td><input type="text" placeholder="Add comments here..."></td>
                   </tr>
                 </tbody>
               </table>
@@ -352,19 +415,37 @@
 
           </div>
 
-          <button class="btn addWorksheet-btn">SAVE</button>
-
+          <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">SAVE</button>
+          <!-- addWorksheet-btn -->
         </main>
       </div>
     </div>
+
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <h4 class="modal-title">&nbsp;</h4>
+          </div>
+          <div class="modal-body">
+            <p>Are you sure you want to continue and save the form?</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Don't save</button>
+            <button type="button" class="btn btn-primary addWorksheet-btn">Save changes</button>
+          </div>
+        </div><!-- /.modal-content -->
+      </div><!-- /.modal-dialog -->
+    </div><!-- /.modal -->
+
 
     <!-- Bootstrap core JavaScript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../../../dist/js/bootstrap.min.js"></script>
+    <script src="../js/vendor/bootstrap.min.js"></script>
 
     <!-- Icons -->
     <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
@@ -372,40 +453,9 @@
       feather.replace()
     </script>
 
-    <!-- Graphs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
-    <script>
-      var ctx = document.getElementById("myChart");
-      var myChart = new Chart(ctx, {
-        type: 'line',
-        data: {
-          labels: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-          datasets: [{
-            data: [15339, 21345, 18483, 24003, 23489, 24092, 12034],
-            lineTension: 0,
-            backgroundColor: 'transparent',
-            borderColor: '#007bff',
-            borderWidth: 4,
-            pointBackgroundColor: '#007bff'
-          }]
-        },
-        options: {
-          scales: {
-            yAxes: [{
-              ticks: {
-                beginAtZero: false
-              }
-            }]
-          },
-          legend: {
-            display: false,
-          }
-        }
-      });
-    </script>
-
 		<!-- SCRIPTS -->
 		<script src="../../js/vendor/jquery.min.js"></script>
+    <script src="../../js/vendor/datepicker.min.js"></script> 
 		<script src="../../js/app.js"></script>
 
 	</body>

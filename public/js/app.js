@@ -83,8 +83,175 @@ let addWorkSheetEntry = function(inputName){
     })
 };
 
+let storeListData = [
+    {
+        sbuName: "south",
+        stores: [
+            { name: "south a" },
+            { name: "south b" },
+            { name: "south c" },
+            { name: "south d" },
+            { name: "south e" },
+            { name: "south f" },
+            { name: "south g" },
+            { name: "south h" },
+            { name: "south i" },
+            { name: "south j" },
+            { name: "south k" },
+            { name: "south l" },
+            { name: "south m" },
+            { name: "south n" },
+            { name: "south o" },
+            { name: "south p" },
+            { name: "south q" },
+            { name: "south r" }                        
+        ]
+    },
+    {
+        sbuName: "north",
+        stores: [
+            { name: "north a" },
+            { name: "north b" },
+            { name: "north c" },
+            { name: "north d" },
+            { name: "north e" },
+            { name: "north f" },
+            { name: "north g" },
+            { name: "north h" },
+            { name: "north i" },
+            { name: "north j" },
+            { name: "north k" },
+            { name: "north l" },
+            { name: "north m" },
+            { name: "north n" },
+            { name: "north o" },
+            { name: "north p" },
+            { name: "north q" },
+            { name: "north r" }                        
+        ]
+    },
+    {
+        sbuName: "central",
+        stores: [
+            { name: "central a" },
+            { name: "central c" },
+            { name: "central b" },
+            { name: "central d" },
+            { name: "central e" },
+            { name: "central f" },
+            { name: "central g" },
+            { name: "central h" },
+            { name: "central i" },
+            { name: "central j" },
+            { name: "central k" },
+            { name: "central l" },
+            { name: "central m" },
+            { name: "central n" },
+            { name: "central o" },
+            { name: "central p" },
+            { name: "central q" },
+            { name: "central r" }                        
+        ]
+    },
+    {
+        sbuName: "pta",
+        stores: [
+            { name: "pta a" },
+            { name: "pta c" },
+            { name: "pta b" },
+            { name: "pta d" },
+            { name: "pta e" },
+            { name: "pta f" },
+            { name: "pta g" },
+            { name: "pta h" },
+            { name: "pta i" },
+            { name: "pta j" },
+            { name: "pta k" },
+            { name: "pta l" },
+            { name: "pta m" },
+            { name: "pta n" },
+            { name: "pta o" },
+            { name: "pta p" },
+            { name: "pta q" },
+            { name: "pta r" }                        
+        ]
+    },
+    {
+        sbuName: "coastal",
+        stores: [
+            { name: "coastal a" },
+            { name: "coastal c" },
+            { name: "coastal b" },
+            { name: "coastal d" },
+            { name: "coastal e" },
+            { name: "coastal f" },
+            { name: "coastal g" },
+            { name: "coastal h" },
+            { name: "coastal i" },
+            { name: "coastal j" },
+            { name: "coastal k" },
+            { name: "coastal l" },
+            { name: "coastal m" },
+            { name: "coastal n" },
+            { name: "coastal o" },
+            { name: "coastal p" },
+            { name: "coastal q" },
+            { name: "coastal r" }                        
+        ]
+    },
+    {
+        sbuName: "jhb",
+        stores: [
+            { name: "jhb a" },
+            { name: "jhb c" },
+            { name: "jhb b" },
+            { name: "jhb d" },
+            { name: "jhb e" },
+            { name: "jhb f" },
+            { name: "jhb g" },
+            { name: "jhb h" },
+            { name: "jhb i" },
+            { name: "jhb j" },
+            { name: "jhb k" },
+            { name: "jhb l" },
+            { name: "jhb m" },
+            { name: "jhb n" },
+            { name: "jhb o" },
+            { name: "jhb p" },
+            { name: "jhb q" },
+            { name: "jhb r" }                        
+        ]
+    }                    
+];
+
+// init date picker
+const picker = datepicker('.date-picker');
+
+/* SBU / Store select swopper func */
+$("#sbu_list").on("change", function(){
+
+    // always clear store list first
+    $("#store_list").empty();
+
+    if($(this).val().length > 0){
+        var getThisIndex = $(this).find(":selected").index() - 1;
+        var getStoreList = storeListData[getThisIndex].stores;
+        var html = "";
+        for(var i = 0; i <= getStoreList.length - 1; i++){
+            html += "<option value='"+getStoreList[i].name+"'>"+getStoreList[i].name+"</option>";
+        }
+        $("#store_list").prepend(html);
+    }
+});
+
 $('.addWorksheet-btn').click(function(){
-    var getNameVal = $("#nameField").val();
-    addWorkSheetEntry(getNameVal);
-    $("#nameField").val("");
+    //var getNameVal = $("#nameField").val();
+    //addWorkSheetEntry(getNameVal);
+    alert("do validation first");
+
+    console.log(storeListData);
+
+    $(".table-responsive input").each(function(k,v){
+        console.log(v)
+    });
 })
