@@ -4,7 +4,7 @@ var pageUrl = location.href;
 
 /* ------------------ SET USERNAME ON PAGE ----------------------- */
 if(pageUrl.indexOf('addworksheet') > -1){
-    alert("yo yo")
+    //alert("yo yo")
     $("#user-input").val(localStorage.getItem('username'));
 }
 
@@ -232,6 +232,68 @@ let addWorkSheetEntry = function(dataObj){
     })
 };
 
+$(".save-btn").click(function(){
+
+    var inputHasError = false;
+
+    if($("#date-input").val() == ''){
+        $("#date-input").addClass("error");
+        inputHasError = true;
+    } else {
+        inputHasError = false;
+    }
+
+    $("select").each(function(k,v){
+        if($(this).find(":selected").val() == '--Please Select--'){
+            $(this).addClass("error");
+            inputHasError = true;
+        }
+    });    
+
+    if(inputHasError){ $(".error-text").show() } else { $(".error-text").hide() }
+
+});
+
+// onChange each select option item AND calculate % PER cat
+
+let arrayData = {
+    people: [],
+    merBasicPrinc: [],
+    housekeeping: [],
+    valMsgElem: [],
+    seasSpec: [],
+    promotional: []
+}
+
+$("select").on("change", function(k,v){
+    // always validate all select values first before submitting
+    if($(this).val() != '--Please Select--'){
+
+        // some bg color coding per select option - based on value
+        if($(this).val() == '0' || $(this).val() == '1'){
+            $(this).attr("style","background-color: red");
+        } else if($(this).val() == '2'){
+            $(this).attr("style","background-color: orange");
+        } else {
+            $(this).attr("style","background-color: white");
+        }
+
+        // remove error since we now have a valid value
+        $(this).removeClass('error');
+
+        let getParentClass = $(this).parent().parent().parent().parent().parent().attr('class').split(" ")[1];
+        let getThisIndex = $(this).parent().parent().attr('class');
+        let trAmount = $(this).parent().parent().parent().find("tr").length * 3;
+
+        arrayData[getParentClass].splice(getThisIndex, 1, $(this).val() == 'na' ? 0: parseInt($(this).val(),10));
+        let addUpVals = arrayData[getParentClass].reduce(function(i,v){ return parseInt(i,10) + parseInt(v,10) },0);
+        let calculateValsFormula = addUpVals / parseInt(trAmount) * 100;     
+        $("."+getParentClass+" .perc span").html(calculateValsFormula.toFixed(2));
+    } else {
+        $(this).attr("style","background-color: white");
+    }
+});
+
 $('.addWorksheet-btn').click(function(){
 
     let worksheetData = [
@@ -243,10 +305,7 @@ $('.addWorksheet-btn').click(function(){
         }
     ];
 
-    addWorkSheetEntry(worksheetData);
 
-    /*
-    $(".table-responsive input").each(function(k,v){
-        console.log(v)
-    });*/
+    //addWorkSheetEntry(worksheetData);
+
 })

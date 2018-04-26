@@ -12,9 +12,18 @@ a.btn { color: #fff }
 
 .btn-default { background-color: green }
 
+.perc {
+  float: right;
+  position: relative;
+  top: -10px;
+}
+
 .in {
   opacity: 0.9 !important;
 }
+
+.error { border: 1px solid red }
+.error-text { color: red; display: none; }
 
 /*
  * Sidebar
