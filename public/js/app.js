@@ -232,31 +232,9 @@ let addWorkSheetEntry = function(dataObj){
     })
 };
 
-$(".save-btn").click(function(){
-
-    var inputHasError = false;
-
-    if($("#date-input").val() == ''){
-        $("#date-input").addClass("error");
-        inputHasError = true;
-    } else {
-        inputHasError = false;
-    }
-
-    $("select").each(function(k,v){
-        if($(this).find(":selected").val() == '--Please Select--'){
-            $(this).addClass("error");
-            inputHasError = true;
-        }
-    });    
-
-    if(inputHasError){ $(".error-text").show() } else { $(".error-text").hide() }
-
-});
-
 // onChange each select option item AND calculate % PER cat
 
-let arrayData = {
+let ratingData = {
     people: [],
     merBasicPrinc: [],
     housekeeping: [],
@@ -265,6 +243,16 @@ let arrayData = {
     promotional: []
 }
 
+let commentData = {
+    people: [],
+    merBasicPrinc: [],
+    housekeeping: [],
+    valMsgElem: [],
+    seasSpec: [],
+    promotional: []
+}
+
+// add RATING data per select item
 $("select").on("change", function(k,v){
     // always validate all select values first before submitting
     if($(this).val() != '--Please Select--'){
@@ -285,13 +273,45 @@ $("select").on("change", function(k,v){
         let getThisIndex = $(this).parent().parent().attr('class');
         let trAmount = $(this).parent().parent().parent().find("tr").length * 3;
 
-        arrayData[getParentClass].splice(getThisIndex, 1, $(this).val() == 'na' ? 0: parseInt($(this).val(),10));
-        let addUpVals = arrayData[getParentClass].reduce(function(i,v){ return parseInt(i,10) + parseInt(v,10) },0);
+        ratingData[getParentClass].splice(getThisIndex, 1, $(this).val() == 'na' ? 0: parseInt($(this).val(),10));
+        let addUpVals = ratingData[getParentClass].reduce(function(i,v){ return parseInt(i,10) + parseInt(v,10) },0);
         let calculateValsFormula = addUpVals / parseInt(trAmount) * 100;     
         $("."+getParentClass+" .perc span").html(calculateValsFormula.toFixed(2));
     } else {
         $(this).attr("style","background-color: white");
     }
+});
+
+// add COMMENT data per select item
+$(".comment_input").on("change", function(){
+    let getThisVal = $(this).val();
+    alert(getThisVal);
+});
+
+$(".save-btn").click(function(){
+
+    var inputHasError = false;
+
+    if($("#date-input").val() == ''){
+        $("#date-input").addClass("error");
+        inputHasError = true;
+    } else {
+        $("#date-input").removeClass("error");
+        inputHasError = false;
+    }
+
+    $("select").each(function(k,v){
+        if($(this).find(":selected").val() == '--Please Select--'){
+            $(this).addClass("error");
+            inputHasError = true;
+        }
+    });    
+
+    if(inputHasError){ $(".error-text").show() } else { $(".error-text").hide() }
+
+    console.log("here comes the rating data");
+    console.log(ratingData);        
+
 });
 
 $('.addWorksheet-btn').click(function(){
@@ -304,7 +324,6 @@ $('.addWorksheet-btn').click(function(){
             store: $("#store_list").find(":selected").val()
         }
     ];
-
 
     //addWorkSheetEntry(worksheetData);
 
